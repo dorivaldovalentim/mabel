@@ -28,7 +28,13 @@
     <body>
         <script src="{{ asset('admin/js/preloader.js') }}"></script>
         
-        @yield('content')
+        <div class="body-wrapper">
+
+            <x-menus.sidebar-menu />
+
+            @yield('content')
+
+        </div>
         
         <script src="{{ asset('admin/vendors/js/vendor.bundle.base.js') }}"></script>
         <script src="{{ asset('admin/js/material.js') }}"></script>
