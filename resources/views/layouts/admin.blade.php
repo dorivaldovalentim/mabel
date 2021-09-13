@@ -27,15 +27,29 @@
 
     <body>
         <script src="{{ asset('admin/js/preloader.js') }}"></script>
-        
+
         <div class="body-wrapper">
 
             <x-menus.sidebar-menu />
 
-            @yield('content')
+            <div class="main-wrapper mdc-drawer-app-content">
+
+                <x-menus.top-menu />
+
+                <div class="page-wrapper mdc-toolbar-fixed-adjust">
+
+                    <main class="content-wrapper">
+
+                        @yield('content')
+
+                    </main>
+
+                </div>
+
+            </div>
 
         </div>
-        
+
         <script src="{{ asset('admin/vendors/js/vendor.bundle.base.js') }}"></script>
         <script src="{{ asset('admin/js/material.js') }}"></script>
         <script src="{{ asset('admin/js/misc.js') }}"></script>
