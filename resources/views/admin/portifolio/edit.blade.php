@@ -4,6 +4,7 @@
     <div class="container col-md-8 col-lg-">
             <form action="{{ route('portifolio.update', ['portifolio' => $portifolio->id ]) }}" method="POST" enctype="multipart/form-data">
                 @csrf
+                @method('PUT')
                 <div class="form-group">
                     <label>Nome</label>
                     <input type="text" name="name" class="form-control">

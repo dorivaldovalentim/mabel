@@ -5,7 +5,6 @@
     <div class="card container col-md-8">
         <p>Portifolio: {{ $portifolio->name }}</p>
         <p>Descrição: {{ $portifolio->description }}</p>
-        <p>File: {{ $portifolio->file }}</p>
-        <p>Tipo de File: {{ $portifolio->typeFile }}</p>
+        <p><img src="{{ asset('storage/'. Str::after($portifolio->file, 'public')) }}" width="40%"></p>
     </div>
 @endsection
