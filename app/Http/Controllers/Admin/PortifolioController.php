@@ -85,11 +85,14 @@ class PortifolioController extends Controller
     {
         $portifolio->name = $request->name;
         $portifolio->description = $request->description;
-        $portifolio->file = $request->file;
-        $portifolio->typeFile = $request->typeFile;
+        
+        if ($request->hasFile('file')) {
+            $portifolio->file = $request->file->store('public');
+            $portifolio->typeFile = $request->typeFile;
+        }
         
         if ($portifolio->save()) {
-            return redirect()->route()->back();
+            return redirect()->back();
         }
     }
 
@@ -102,7 +105,7 @@ class PortifolioController extends Controller
     public function destroy(Portifolio $portifolio)
     {
         if ($portifolio->delete()) {
-            return redirect()->route()->back();
+            return redirect()->back();
         }
     }
 }
