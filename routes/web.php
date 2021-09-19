@@ -24,4 +24,6 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin', 'middleware' => 'auth
     Route::get('/home', 'AdminController@index')->name('admin');
 
     Route::resource('portifolio', 'PortifolioController');
+    Route::resource('gallery', 'GalleryController');
+
 });
