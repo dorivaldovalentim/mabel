@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Gallery;
 use App\Http\Controllers\Controller;
+use App\Portifolio;
 use Illuminate\Http\Request;
 
 class GalleryController extends Controller
@@ -15,7 +16,8 @@ class GalleryController extends Controller
      */
     public function index()
     {
-        //
+        $portifolios = Portifolio::all();
+        return view('admin.gallery.index', compact('portifolios'));
     }
 
     /**
@@ -25,7 +27,8 @@ class GalleryController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.gallery.create');
+
     }
 
     /**
@@ -36,7 +39,16 @@ class GalleryController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $gallery = new Gallery();
+        $gallery->portifolio_id = $request->portifolio_id;
+
+        if ($request->hasFile('file')) {
+            $gallery->path = $request->file->store('public');
+        }
+        
+        if ($gallery->save()) {
+            return redirect()->back();
+        }
     }
 
     /**
@@ -47,7 +59,7 @@ class GalleryController extends Controller
      */
     public function show(Gallery $gallery)
     {
-        //
+        return view('admin.gallery.show', compact('gallery') );
     }
 
     /**
@@ -58,7 +70,8 @@ class GalleryController extends Controller
      */
     public function edit(Gallery $gallery)
     {
-        //
+        return view('admin.gallery.edit');
+
     }
 
     /**
@@ -70,7 +83,15 @@ class GalleryController extends Controller
      */
     public function update(Request $request, Gallery $gallery)
     {
-        //
+        $gallery->portifolio_id = $request->portifolio_id;
+
+        if ($request->hasFile('file')) {
+            $gallery->path = $request->file->store('public');
+        }
+        
+        if ($gallery->save()) {
+            return redirect()->back();
+        }
     }
 
     /**
@@ -81,6 +102,8 @@ class GalleryController extends Controller
      */
     public function destroy(Gallery $gallery)
     {
-        //
+        if ($gallery->delete()) {
+            return redirect()->back();
+        }
     }
 }
