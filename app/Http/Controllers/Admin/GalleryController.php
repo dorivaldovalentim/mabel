@@ -40,15 +40,21 @@ class GalleryController extends Controller
     public function store(Request $request)
     {
         $gallery = new Gallery();
-        $gallery->portifolio_id = $request->portifolio_id;
+        $gallery->portifolio_id = 2;
 
-        if ($request->hasFile('file')) {
-            $gallery->path = $request->file->store('public');
+        /** Buscar dados do portifolio */
+        $portifolio = Portifolio::find($gallery->portifolio_id);
+        if ($request->hasFile('images')) {
+            for ($i = 0; $i < count($request->allFiles()['images']); $i++) { 
+                $file = $request->allFiles()['images'][$i];
+                $gallery->path = $file->store('public/'. $portifolio->name . '/'. 'gallery');
+                $gallery->save();
+            }
         }
-        
-        if ($gallery->save()) {
-            return redirect()->back();
-        }
+        // dd($gallery);
+        // if ($gallery->save()) {
+        //     return redirect()->back();
+        // }
     }
 
     /**
@@ -83,10 +89,16 @@ class GalleryController extends Controller
      */
     public function update(Request $request, Gallery $gallery)
     {
-        $gallery->portifolio_id = $request->portifolio_id;
+        $gallery->portifolio_id = 1;
 
-        if ($request->hasFile('file')) {
-            $gallery->path = $request->file->store('public');
+        /** Buscar dados do portifolio */
+        $portifolio = Portifolio::find($request->portifolio_id);
+
+        if ($request->hasFile('images')) {
+            for ($i = 0; $i < count($request->allFiles()); $i++) { 
+                $file = $request->allFiles()['images'][$i];
+                $gallery->path = $file->store('public/'. $portifolio->name . '/'. 'gallery/');
+            }
         }
         
         if ($gallery->save()) {
