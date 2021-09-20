@@ -42,7 +42,7 @@ class PortifolioController extends Controller
         $portifolio->description = $request->description;
         
         if ($request->hasFile('file')) {
-            $portifolio->file = $request->file->store('public');
+            $portifolio->file = $request->file->store('public/'. $portifolio->name);
             $portifolio->typeFile = $request->typeFile;
 
         }
@@ -87,7 +87,7 @@ class PortifolioController extends Controller
         $portifolio->description = $request->description;
         
         if ($request->hasFile('file')) {
-            $portifolio->file = $request->file->store('public');
+            $portifolio->file = $request->file->store('public/'. $request->name);
             $portifolio->typeFile = $request->typeFile;
         }
         
