@@ -44,6 +44,8 @@
 
                     </main>
 
+                    <x-footer />
+
                 </div>
 
             </div>
