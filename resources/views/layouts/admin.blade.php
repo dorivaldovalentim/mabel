@@ -20,6 +20,8 @@
         <!-- Vendors -->
         <link href="{{ asset('admin/vendors/mdi/css/materialdesignicons.min.css') }}" rel="stylesheet">
         <link href="{{ asset('admin/vendors/css/vendor.bundle.base.css') }}" rel="stylesheet">
+        <link href="{{ asset('admin/vendors/flag-icon-css/css/flag-icon.min.css') }}" rel="stylesheet">
+        <link href="{{ asset('admin/vendors/jvectormap/jquery-jvectormap.css') }}" rel="stylesheet">
 
         <!-- CSS -->
         <link href="{{ asset('admin/css/style.css') }}" rel="stylesheet">
@@ -55,5 +57,6 @@
         <script src="{{ asset('admin/vendors/js/vendor.bundle.base.js') }}"></script>
         <script src="{{ asset('admin/js/material.js') }}"></script>
         <script src="{{ asset('admin/js/misc.js') }}"></script>
+        <script src="{{ asset('admin/js/dashboard.js') }}"></script>
     </body>
 </html>
