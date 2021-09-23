@@ -1,7 +1,7 @@
 <aside class="mdc-drawer mdc-drawer--dismissible mdc-drawer--open">
     <div class="mdc-drawer__header">
         <a href="index.html" class="brand-logo">
-            <img src="../admin/images/logo.svg" alt="logo">
+            <img src="{{ asset('admin/images/logo_red_white_without_legend.png') }}" width="100%" alt="logo">
         </a>
     </div>
     <div class="mdc-drawer__content">
