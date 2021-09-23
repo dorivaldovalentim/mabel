@@ -55,6 +55,9 @@
         </div>
 
         <script src="{{ asset('admin/vendors/js/vendor.bundle.base.js') }}"></script>
+        <script src="{{ asset('admin/vendors/chartjs/Chart.min.js') }}"></script>
+        <script src="{{ asset('admin/vendors/jvectormap/jquery-jvectormap.min.js') }}"></script>
+        <script src="{{ asset('admin/vendors/jvectormap/jquery-jvectormap-world-mill-en.js') }}"></script>
         <script src="{{ asset('admin/js/material.js') }}"></script>
         <script src="{{ asset('admin/js/misc.js') }}"></script>
         <script src="{{ asset('admin/js/dashboard.js') }}"></script>
