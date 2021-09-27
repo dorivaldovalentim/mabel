@@ -9,6 +9,18 @@ use Illuminate\Http\Request;
 class PortifolioController extends Controller
 {
     /**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->middleware('auth');
+        $this->middleware('auth.admin')->only('index');
+        $this->middleware('auth.super_admin')->only('create');
+    }
+
+    /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
