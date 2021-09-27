@@ -12,9 +12,13 @@ class GeneralSeeder extends Seeder
     public function run()
     {
         DB::table('users')->insert([
-            'name' => 'Acácia Valentim',
+            'username' => 'acaciavalentim',
+            'first_name' => 'Acácia',
+            'last_name' => 'Valentim',
             'email' => 'acaciavalentim@gmail.com',
-            'password' => Hash::make('qwerty')
+            'phone' => '933802891',
+            'password' => Hash::make('qwerty'),
+            'is_admin' => 0
         ]);
     }
 }
