@@ -2,7 +2,7 @@
     <div class="mdc-top-app-bar__row">
         <div class="mdc-top-app-bar__section mdc-top-app-bar__section--align-start">
             <button class="material-icons mdc-top-app-bar__navigation-icon mdc-icon-button sidebar-toggler">menu</button>
-            <span class="mdc-top-app-bar__title">Olá {{ auth()->user()->name }}!</span>
+            <span class="mdc-top-app-bar__title">Olá {{ auth()->user()->first_name }}!</span>
             <div
                 class="mdc-text-field mdc-text-field--outlined mdc-text-field--with-leading-icon search-text-field d-none d-md-flex">
                 <i class="material-icons mdc-text-field__icon">search</i>
@@ -22,7 +22,7 @@
                 <button class="mdc-button mdc-menu-button">
                     <span class="d-flex align-items-center">
                         <span class="figure"></span>
-                        <span class="user-name">{{ auth()->user()->name }}</span>
+                        <span class="user-name">{{ auth()->user()->first_name . ' ' . auth()->user()->last_name }}</span>
                     </span>
                 </button>
                 <div class="mdc-menu mdc-menu-surface" tabindex="-1">
