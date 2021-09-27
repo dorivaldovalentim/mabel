@@ -6,7 +6,7 @@
     </div>
     <div class="mdc-drawer__content">
         <div class="user-info">
-            <p class="name">{{ auth()->user()->name }}</p>
+            <p class="name">{{ auth()->user()->username }}</p>
             <p class="email">{{ auth()->user()->email }}</p>
         </div>
         <div class="mdc-list-group">
