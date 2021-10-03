@@ -25,7 +25,10 @@ class UserController extends Controller
      */
     public function index()
     {
-        $users = User::where('id', '!=', 1)->where('id', '!=', auth()->user()->id)->get();
+        $users =
+            (isSuperAdmin()) ?
+            User::withTrashed()->where('id', '!=', 1)->where('id', '!=', auth()->user()->id)->get() :
+            User::where('id', '!=', 1)->where('id', '!=', auth()->user()->id)->get();
         return view('admin.users.index', compact('users'));
     }
 

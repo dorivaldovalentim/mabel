@@ -16,6 +16,7 @@
                             <th>Nome</th>
                             <th>E-mail</th>
                             <th>Telefone</th>
+                            @if (isSuperAdmin())<th>Estado</th>@endif
                             <th>Acções</th>
                         </tr>
                     </thead>
@@ -27,9 +28,16 @@
                                 <td>{{ $user->first_name . ' ' . $user->last_name }}</td>
                                 <td>{{ $user->email }}</td>
                                 <td>{{ $user->phone }}</td>
+
+                                @if (isSuperAdmin())
+                                    <td>
+                                        <i class="material-icons mdc-button__icon {{ $user->deleted_at ? 'text-danger' : 'text-success' }}">favorite</i>
+                                    </td>
+                                @endif
+
                                 <td>
                                     <a href="{{ route('user.edit', $user->id) }}"
-                                        class="mdc-button mdc-button--raised icon-button filled-button--secondary">
+                                        class="mdc-button mdc-button--raised icon-button filled-button--info p-1 btn">
                                         <i class="material-icons mdc-button__icon">edit</i>
                                     </a>
 
@@ -38,7 +46,7 @@
                                             event.preventDefault();
                                             confirm('Sério?') ? {{ 'destroy_user_' . $user->id }}.submit() : '';
                                         "
-                                        class="mdc-button mdc-button--raised icon-button filled-button--secondary">
+                                        class="mdc-button mdc-button--raised icon-button filled-button--secondary p-1 btn">
                                         <i class="material-icons mdc-button__icon">delete</i>
                                     </a>
 
