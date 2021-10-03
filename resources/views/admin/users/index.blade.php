@@ -16,7 +16,8 @@
                             <th>Nome</th>
                             <th>E-mail</th>
                             <th>Telefone</th>
-                            @if (isSuperAdmin())<th>Estado</th>@endif
+                            <th>Estado</th>
+                            @if (isSuperAdmin())<th>Username</th>@endif
                             <th>Acções</th>
                         </tr>
                     </thead>
@@ -24,15 +25,16 @@
                     <tbody>
                         @foreach ($users as $user)
                             <tr>
-                                <td>{{ $user->id }}</td>
+                                <td>{{ $user->id - 1 }}</td>
                                 <td>{{ $user->first_name . ' ' . $user->last_name }}</td>
                                 <td>{{ $user->email }}</td>
                                 <td>{{ $user->phone }}</td>
-
+                                <td>
+                                    <i class="material-icons mdc-button__icon {{ $user->deleted_at ? 'text-danger' : 'text-success' }}">favorite</i>
+                                </td>
+                                
                                 @if (isSuperAdmin())
-                                    <td>
-                                        <i class="material-icons mdc-button__icon {{ $user->deleted_at ? 'text-danger' : 'text-success' }}">favorite</i>
-                                    </td>
+                                    <td>{{ $user->username }}</td>
                                 @endif
 
                                 <td>
