@@ -25,4 +25,5 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin', 'middleware' => 'auth
     Route::resource('portifolio', 'PortifolioController');
     Route::resource('gallery', 'GalleryController');
     Route::resource('user', 'UserController');
+    Route::delete('/user/{id}/restore', 'UserController@restore')->name('user.restore');
 });

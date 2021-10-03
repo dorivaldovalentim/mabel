@@ -79,4 +79,16 @@ class UserController extends Controller
         $user = User::findOrFail($id)->delete();
         return redirect()->route('user.index');
     }
+
+    /**
+     * Restore the specified resource from storage.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function restore($id)
+    {
+        $user = User::withTrashed()->findOrFail($id)->restore();
+        return redirect()->route('user.index');
+    }
 }

@@ -41,28 +41,55 @@
                                         <i class="material-icons mdc-button__icon">edit</i>
                                     </a>
 
-                                    <a href="#"
-                                        onclick="
-                                            event.preventDefault();
-                                            swal({
-                                                title: 'Aviso',
-                                                text: 'Tem certeza de que pretende remover este usuário?',
-                                                icon: 'warning',
-                                                buttons: true,
-                                                dangerMode: true,
-                                            }).then(response => {
-                                                if (response) {{ 'destroy_user_' . $user->id }}.submit()
-                                            });
-                                        "
-                                        class="mdc-button mdc-button--raised icon-button filled-button--secondary p-1 btn">
-                                        <i class="material-icons mdc-button__icon">delete</i>
-                                    </a>
+                                    @if (!$user->deleted_at)
+                                        <a href="#"
+                                            onclick="
+                                                event.preventDefault();
+                                                swal({
+                                                    title: 'Aviso',
+                                                    text: 'Tem certeza de que pretende remover este usuário?',
+                                                    icon: 'warning',
+                                                    buttons: true,
+                                                    dangerMode: true,
+                                                }).then(response => {
+                                                    if (response) {{ 'destroy_user_' . $user->id }}.submit()
+                                                });
+                                            "
+                                            class="mdc-button mdc-button--raised icon-button filled-button--secondary p-1 btn">
+                                            <i class="material-icons mdc-button__icon">delete</i>
+                                        </a>
 
-                                    <form action="{{ route('user.destroy', $user->id) }}" method="POST" id="{{ 'destroy_user_' . $user->id }}">
-                                        @csrf
+                                        <form action="{{ route('user.destroy', $user->id) }}" method="POST" id="{{ 'destroy_user_' . $user->id }}">
+                                            @csrf
 
-                                        @METHOD('delete')
-                                    </form>
+                                            @METHOD('delete')
+                                        </form>
+                                    @endif
+
+                                    @if ($user->deleted_at)
+                                        <a href="#"
+                                            onclick="
+                                                event.preventDefault();
+                                                swal({
+                                                    title: 'Aviso',
+                                                    text: 'O usuário vai voltar a ter acesso a plataforma?',
+                                                    icon: 'warning',
+                                                    buttons: true,
+                                                    dangerMode: true,
+                                                }).then(response => {
+                                                    if (response) {{ 'restore_user_' . $user->id }}.submit()
+                                                });
+                                            "
+                                            class="mdc-button mdc-button--raised icon-button filled-button--success p-1 btn">
+                                            <i class="material-icons mdc-button__icon">delete</i>
+                                        </a>
+
+                                        <form action="{{ route('user.restore', $user->id) }}" method="POST" id="{{ 'restore_user_' . $user->id }}">
+                                            @csrf
+
+                                            @METHOD('delete')
+                                        </form>
+                                    @endif
                                 </td>
                             </tr>
                         @endforeach
