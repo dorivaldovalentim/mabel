@@ -24,7 +24,7 @@
         <link href="{{ asset('admin/vendors/jvectormap/jquery-jvectormap.css') }}" rel="stylesheet">
 
         <!-- CSS -->
-        <link href="{{ asset('admin/css/bootstrap.min.css') }}" rel="stylesheet">
+        <link href="{{ asset('css/app.css') }}" rel="stylesheet">
         <link href="{{ asset('admin/css/style.css') }}" rel="stylesheet">
     </head>
 
@@ -55,6 +55,7 @@
 
         </div>
 
+        <script src="{{ asset('js/app.js') }}"></script>
         <script src="{{ asset('admin/vendors/js/vendor.bundle.base.js') }}"></script>
         <script src="{{ asset('admin/vendors/chartjs/Chart.min.js') }}"></script>
         <script src="{{ asset('admin/vendors/jvectormap/jquery-jvectormap.min.js') }}"></script>
