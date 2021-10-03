@@ -41,10 +41,18 @@
                                         <i class="material-icons mdc-button__icon">edit</i>
                                     </a>
 
-                                    <a href="{{ route('user.destroy', $user->id) }}"
+                                    <a href="#"
                                         onclick="
                                             event.preventDefault();
-                                            confirm('Sério?') ? {{ 'destroy_user_' . $user->id }}.submit() : '';
+                                            swal({
+                                                title: 'Aviso',
+                                                text: 'Tem certeza de que pretende remover este usuário?',
+                                                icon: 'warning',
+                                                buttons: true,
+                                                dangerMode: true,
+                                            }).then(response => {
+                                                if (response) {{ 'destroy_user_' . $user->id }}.submit()
+                                            });
                                         "
                                         class="mdc-button mdc-button--raised icon-button filled-button--secondary p-1 btn">
                                         <i class="material-icons mdc-button__icon">delete</i>

@@ -31,7 +31,7 @@
     <body>
         <script src="{{ asset('admin/js/preloader.js') }}"></script>
 
-        <div class="body-wrapper">
+        <div id="app" class="body-wrapper">
 
             <x-menus.sidebar-menu />
 
