@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\User;
+use Illuminate\Contracts\Validation\Validator;
+use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
 {
@@ -65,7 +67,26 @@ class UserController extends Controller
      */
     public function update(Request $request, $id)
     {
-        return 'Update ' . $id;
+        $request->validate([
+            'first_name' => ['required', 'string', 'max:255'],
+            'last_name' => ['required', 'string', 'max:255'],
+            'email' => ['required', 'string', 'email', 'max:255'],
+            'phone' => ['required', 'string', 'max:255'],
+            'password' => ['nullable', 'string', 'min:6', 'confirmed'],
+        ]);
+
+        $user = [
+            'first_name' => $request->first_name,
+            'last_name' => $request->last_name,
+            'email' => $request->email,
+            'phone' => $request->phone,
+        ];
+
+        if($request->password)
+            $user['password'] = Hash::make($request->password);            
+
+        (new User())->findOrFail($id)->fill($user)->update();
+        return redirect()->route('user.index');
     }
 
     /**
