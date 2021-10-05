@@ -27,24 +27,26 @@
                 </button>
                 <div class="mdc-menu mdc-menu-surface" tabindex="-1">
                     <ul class="mdc-list" role="menu" aria-hidden="true" aria-orientation="vertical">
-                        <li class="mdc-list-item" role="menuitem">
+                        <a href="{{ route('user.edit', auth()->user()->id) }}" class="mdc-list-item" role="menuitem">
                             <div class="item-thumbnail item-thumbnail-icon-only">
                                 <i class="mdi mdi-account-edit-outline text-primary"></i>
                             </div>
+                            
                             <div class="item-content d-flex align-items-start flex-column justify-content-center">
                                 <h6 class="item-subject font-weight-normal">Actualizar perfil</h6>
                             </div>
-                        </li>
-                        <li class="mdc-list-item" role="menuitem">
+                        </a>
+
+                        <a href="#" onclick="document.querySelector('#logout').submit()" class="mdc-list-item" role="menuitem">
                             <div class="item-thumbnail item-thumbnail-icon-only">
                                 <i class="mdi mdi-settings-outline text-primary"></i>
                             </div>
 
                             <div class="item-content d-flex align-items-start flex-column justify-content-center">
-                                <a href="#" onclick="document.querySelector('#logout').submit()" class="item-subject font-weight-normal">Logout</a>
+                                <span class="item-subject font-weight-normal">Logout</span>
                                 <form action="{{ route('logout') }}" method="POST" id="logout">@csrf</form>
                             </div>
-                        </li>
+                        </a>
                     </ul>
                 </div>
             </div>
