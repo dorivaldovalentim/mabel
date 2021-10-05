@@ -18,29 +18,6 @@
                         Início
                     </a>
                 </div>
-                <div class="mdc-list-item mdc-drawer-item">
-                    <a class="mdc-expansion-panel-link" href="#" data-toggle="expansionPanel" data-target="portfolios-sub-menu">
-                        <i class="material-icons mdc-list-item__start-detail mdc-drawer-item-icon" aria-hidden="true">dashboard</i>
-                        Portfólios
-                        <i class="mdc-drawer-arrow material-icons">chevron_right</i>
-                    </a>
-
-                    <div class="mdc-expansion-panel" id="portfolios-sub-menu">
-                        <nav class="mdc-list mdc-drawer-submenu">
-                            <div class="mdc-list-item mdc-drawer-item">
-                                <a href="{{ route('portifolio.index') }}" class="mdc-drawer-link">
-                                    Ver
-                                </a>
-                            </div>
-
-                            <div class="mdc-list-item mdc-drawer-item">
-                                <a href="{{ route('portifolio.create') }}" class="mdc-drawer-link">
-                                    Cadastrar
-                                </a>
-                            </div>
-                        </nav>
-                    </div>
-                </div>
 
                 @if (isAdmin())
                     <div class="mdc-list-item mdc-drawer-item">
@@ -67,6 +44,30 @@
                         </div>
                     </div>
                 @endif
+                
+                <div class="mdc-list-item mdc-drawer-item">
+                    <a class="mdc-expansion-panel-link" href="#" data-toggle="expansionPanel" data-target="portfolios-sub-menu">
+                        <i class="material-icons mdc-list-item__start-detail mdc-drawer-item-icon" aria-hidden="true">dashboard</i>
+                        Portfólios
+                        <i class="mdc-drawer-arrow material-icons">chevron_right</i>
+                    </a>
+
+                    <div class="mdc-expansion-panel" id="portfolios-sub-menu">
+                        <nav class="mdc-list mdc-drawer-submenu">
+                            <div class="mdc-list-item mdc-drawer-item">
+                                <a href="{{ route('portifolio.index') }}" class="mdc-drawer-link">
+                                    Ver
+                                </a>
+                            </div>
+
+                            <div class="mdc-list-item mdc-drawer-item">
+                                <a href="{{ route('portifolio.create') }}" class="mdc-drawer-link">
+                                    Cadastrar
+                                </a>
+                            </div>
+                        </nav>
+                    </div>
+                </div>
             </nav>
         </div>
     </div>
