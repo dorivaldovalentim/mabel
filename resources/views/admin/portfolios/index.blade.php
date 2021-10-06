@@ -14,6 +14,7 @@
                             <th>Nome</th>
                             <th>Cliente</th>
                             <th>Tipo</th>
+                            @if (isSuperAdmin())<th class="text-center">Estado</th>@endif
                             <th>Operações</th>
                         </tr>
                     </thead>
@@ -31,6 +32,7 @@
                                 <td>{{ $portfolio->name }}</td>
                                 <td>{{ $portfolio->client ? $portfolio->client : 'Ñ definido' }}</td>
                                 <td>{{ $portfolio->type ? $portfolio->type : 'Ñ definido' }}</td>
+                                @if (isSuperAdmin())<td class="text-center"><i class="material-icons mdc-button__icon {{ $portfolio->deleted_at ? 'text-danger' : 'text-success' }}">favorite</i></td>@endif
                                 <td>
                                     <a href="{{ route('portfolio.show', $portfolio->id) }}"
                                         class="mdc-button mdc-button--raised icon-button filled-button--info p-1 btn">

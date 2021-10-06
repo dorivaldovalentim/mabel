@@ -15,7 +15,7 @@ class PortfolioController extends Controller
      */
     public function index()
     {
-        $portfolios = Portfolio::paginate(20);
+        $portfolios = isSuperAdmin() ? Portfolio::withTrashed()->orderBy('name')->paginate(20) : Portfolio::orderBy('name')->paginate(20);
         return view('admin.portfolios.index', compact('portfolios'));
     }
 
