@@ -22,7 +22,7 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin', 'middleware' => 'auth
     Route::get('/', 'AdminController@index')->name('admin');
     Route::get('/home', 'AdminController@index')->name('admin');
 
-    Route::resource('portifolio', 'PortifolioController');
+    Route::resource('portfolio', 'PortfolioController');
     Route::resource('gallery', 'GalleryController');
     Route::resource('user', 'UserController');
     Route::delete('/user/{id}/restore', 'UserController@restore')->name('user.restore');

@@ -21828,6 +21828,7 @@ address p {
   border-bottom: 1px solid #e9eaef;
   font-weight: 400;
   white-space: nowrap;
+  vertical-align: middle;
 }
 
 .table tbody tr td:first-child {
