@@ -10,19 +10,19 @@
                 <th>Operações</th>
             </thead>
             <tbody>
-                @foreach ($portifolios as $portifolio)
+                @foreach ($portfolios as $portfolio)
                     
                     <tr>
-                        <td>{{ $portifolio->id }}</td>
-                        <td>{{ $portifolio->name }}</td>
+                        <td>{{ $portfolio->id }}</td>
+                        <td>{{ $portfolio->name }}</td>
                         <td class="row justify-content-center">
-                            <a href="{{ route('portifolio.show', ['portifolio' => $portifolio->id]) }}" class="mr-2">
+                            <a href="{{ route('portfolio.show', ['portfolio' => $portfolio->id]) }}" class="mr-2">
                                 <button class="btn btn-primary">Ver</button>
                             </a>
-                            <a href="{{ route('portifolio.edit', ['portifolio' => $portifolio->id]) }}" class="mr-2">
+                            <a href="{{ route('portfolio.edit', ['portfolio' => $portfolio->id]) }}" class="mr-2">
                                 <button class="btn btn-success">Editar</button>
                             </a>
-                            <form method="POST" action="{{ route('portifolio.destroy', ['portifolio' => $portifolio->id]) }}">
+                            <form method="POST" action="{{ route('portfolio.destroy', ['portfolio' => $portfolio->id]) }}">
                                 @csrf
                                 @method('DELETE')
                                 <button type="submit" class="btn btn-danger">Remover</button>

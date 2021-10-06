@@ -2,8 +2,9 @@
 
 @section('content')
     <div class="container col-md-8 col-lg-">
-            <form action="{{ route('portifolio.store') }}" method="POST" enctype="multipart/form-data">
+            <form action="{{ route('portfolio.update', ['portfolio' => $portfolio->id ]) }}" method="POST" enctype="multipart/form-data">
                 @csrf
+                @method('PUT')
                 <div class="form-group">
                     <label>Nome</label>
                     <input type="text" name="name" class="form-control">
