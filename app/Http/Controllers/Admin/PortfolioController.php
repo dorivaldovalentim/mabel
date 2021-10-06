@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Models\Portfolio;
 
 class PortfolioController extends Controller
 {
@@ -24,7 +25,7 @@ class PortfolioController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.portfolios.create');
     }
 
     /**
@@ -35,7 +36,26 @@ class PortfolioController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'name' => 'required',
+            'client' => 'required',
+            'type' => 'nullable',
+            'description' => 'required',
+            'begins_at' => 'nullable',
+            'ends_at' => 'nullable',
+            'file' => 'required'
+        ]);
+
+        $portfolio = (array) $request->all();
+
+        if ($request->hasFile('file')) {
+            $portfolio['file'] = $request->file->store('public/' . $portfolio['name']);
+            $portfolio['file_type'] = $request->file_type;
+        }
+
+        if ($request->user()->portfolios()->create($portfolio)) {
+            return redirect()->back();
+        }
     }
 
     /**
