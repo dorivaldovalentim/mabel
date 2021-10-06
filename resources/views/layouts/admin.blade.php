@@ -63,5 +63,7 @@
         <script src="{{ asset('admin/js/material.js') }}"></script>
         <script src="{{ asset('admin/js/misc.js') }}"></script>
         <script src="{{ asset('admin/js/dashboard.js') }}"></script>
+
+        @yield('script')
     </body>
 </html>

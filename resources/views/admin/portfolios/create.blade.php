@@ -137,3 +137,15 @@
         </div>
     </div>
 @endsection
+
+@section('script')
+
+    <script>
+        @if (session('type') == 'success')
+            swal('Sucesso', "{{ session('message') }}", "{{ session('type') }}")
+        @elseif (session('type') == 'error' || session('type') == 'warning')
+            swal('Aviso', "{{ session('message') }}", "{{ session('type') }}")
+        @endif
+    </script>
+    
+@endsection
