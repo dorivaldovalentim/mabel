@@ -72,7 +72,8 @@ class PortfolioController extends Controller
      */
     public function show($id)
     {
-        //
+        $portfolio = Portfolio::findOrFail($id);
+        return view('admin.portfolios.show', compact('portfolio'));
     }
 
     /**
