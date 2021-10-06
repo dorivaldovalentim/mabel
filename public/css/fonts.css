@@ -1,0 +1,36 @@
+/**
+ * Definição de font family
+ */
+
+
+/** Neo Sans Pro Fonts */
+
+@font-face {
+	font-family: 'Neo Sans Pro';
+	src: url('./../fonts/Neo Sans Pro/Neo Sans Pro.ttf');
+}
+
+@font-face {
+	font-family: 'Neo Sans Pro Italic';
+	src: url('./../fonts/Neo Sans Pro/Neo Sans Pro Italic.ttf');
+}
+
+@font-face {
+	font-family: 'Neo Sans Pro Light Italic';
+	src: url('./../fonts/Neo Sans Pro/Neo Sans Pro Light Italic.ttf');
+}
+
+@font-face {
+	font-family: 'Neo Sans Pro Light';
+	src: url('./../fonts/Neo Sans Pro/Neo Sans Pro Light.ttf');
+}
+
+@font-face {
+	font-family: 'Neo Sans Pro Medium';
+	src: url('./../fonts/Neo Sans Pro/Neo Sans Pro Medium.ttf');
+}
+
+@font-face {
+	font-family: 'Neo Sans Pro Ultra';
+	src: url('./../fonts/Neo Sans Pro/Neo Sans Pro Ultra.ttf');
+}
