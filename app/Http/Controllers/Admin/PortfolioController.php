@@ -124,7 +124,7 @@ class PortfolioController extends Controller
             $portfolio['file_type'] = $request->file_type;
         }
 
-        if ($request->user()->portfolios()->findOrFail($id)->fill($portfolio)->update()) {
+        if (Portfolio::findOrFail($id)->fill($portfolio)->update()) {
             return redirect()->back()->with(['type' => 'success', 'message' => 'Sucesso ao actualizar portfólio']);
         } else {
             return redirect()->back()->with(['type' => 'error', 'message' => 'Erro ao actualizar portfólio']);
