@@ -83,7 +83,8 @@ class PortfolioController extends Controller
      */
     public function edit($id)
     {
-        //
+        $portfolio = Portfolio::findOrFail($id);
+        return view('admin.portfolios.edit', compact('portfolio'));
     }
 
     /**
@@ -95,7 +96,37 @@ class PortfolioController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $request->validate([
+            'name' => 'required|max:255|string',
+            'client' => 'nullable|string|max:255',
+            'type' => 'nullable',
+            'description' => 'required',
+            'begins_at' => 'nullable',
+            'ends_at' => 'nullable',
+            'file' => 'nullable'
+        ], [
+            'required' => 'Este campo é obrigatório'
+        ]);
+
+        $portfolio = (array) [];
+        $portfolio['name'] = $request->name;
+        $portfolio['client'] = $request->client;
+        $portfolio['type'] = $request->type;
+        $portfolio['begins_at'] = $request->begins_at;
+        $portfolio['ends_at'] = $request->ends_at;
+        $portfolio['description'] = $request->description;
+
+        if ($request->hasFile('file')) {
+            $portfolio['file'] = $request->file->store('public/' . $portfolio['name']);
+            $portfolio['file'] = str_replace('public', 'storage', $portfolio['file']);
+            $portfolio['file_type'] = $request->file_type;
+        }
+
+        if ($request->user()->portfolios()->findOrFail($id)->fill($portfolio)->update()) {
+            return redirect()->back()->with(['type' => 'success', 'message' => 'Sucesso ao actualizar portfólio']);
+        } else {
+            return redirect()->back()->with(['type' => 'error', 'message' => 'Erro ao actualizar portfólio']);
+        }
     }
 
     /**

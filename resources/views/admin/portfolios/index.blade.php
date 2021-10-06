@@ -35,7 +35,7 @@
                                 @if (isSuperAdmin())<td class="text-center"><i class="material-icons mdc-button__icon {{ $portfolio->deleted_at ? 'text-danger' : 'text-success' }}">favorite</i></td>@endif
                                 <td>
                                     <a href="{{ route('portfolio.show', $portfolio->id) }}"
-                                        class="mdc-button mdc-button--raised icon-button filled-button--info p-1 btn">
+                                        class="mdc-button mdc-button--raised icon-button filled-button--success p-1 btn">
                                         <i class="material-icons mdc-button__icon">visibility</i>
                                     </a>
                                     
