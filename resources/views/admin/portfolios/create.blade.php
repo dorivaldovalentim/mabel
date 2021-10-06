@@ -39,7 +39,7 @@
                         <label for="type">Tipo de portfólio</label>
 
                         <select name="type" id="type" class="form-control @error('type') is-invalid @enderror">
-                            @foreach (['Vídeo Clipe', 'Video Lyric', 'Spot Publicitário', 'Vídeo Comercial', 'Vídeo de Casamento'] as $type)
+                            @foreach (['Geral', 'Vídeo Clipe', 'Video Lyric', 'Spot Publicitário', 'Vídeo Comercial', 'Vídeo de Casamento'] as $type)
                                 <option value="{{ $type }}">{{ $type }}</option>
                             @endforeach
                         </select>

@@ -23,6 +23,7 @@ class CreatePortfoliosTable extends Migration
             $table->enum('file_type', ['image', 'video'])->nullable();
             $table->text('description')->nullable();
             $table->enum('type', [
+                'Geral',
                 'Vídeo Clipe',
                 'Video Lyric',
                 'Spot Publicitário',
