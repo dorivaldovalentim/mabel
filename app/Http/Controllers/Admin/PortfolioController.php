@@ -106,7 +106,7 @@ class PortfolioController extends Controller
      */
     public function destroy($id)
     {
-        if (auth()->user()->portfolios()->findOrFail($id)->delete()) {
+        if (Portfolio::findOrFail($id)->delete()) {
             return redirect()->back()->with(['type' => 'success', 'message' => 'Portfólio eliminado']);
         } else {
             return redirect()->back()->with(['type' => 'error', 'message' => 'Erro ao eliminado portfólio']);
