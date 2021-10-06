@@ -15,7 +15,8 @@ class PortfolioController extends Controller
      */
     public function index()
     {
-        //
+        $portfolios = Portfolio::paginate(20);
+        return view('admin.portfolios.index', compact('portfolios'));
     }
 
     /**
@@ -52,6 +53,7 @@ class PortfolioController extends Controller
 
         if ($request->hasFile('file')) {
             $portfolio['file'] = $request->file->store('public/' . $portfolio['name']);
+            $portfolio['file'] = str_replace('public', 'storage', $portfolio['file']);
             $portfolio['file_type'] = $request->file_type;
         }
 

@@ -2,36 +2,80 @@
 @section('title', 'Lista de Clientes')
 
 @section('content')
-    <div class="card container col-md-8">
-        <table class="table table-hover text-center">
-            <thead>
-                <th>ID</th>
-                <th>Nome</th>
-                <th>Operações</th>
-            </thead>
-            <tbody>
-                @foreach ($portfolios as $portfolio)
-                    
-                    <tr>
-                        <td>{{ $portfolio->id }}</td>
-                        <td>{{ $portfolio->name }}</td>
-                        <td class="row justify-content-center">
-                            <a href="{{ route('portfolio.show', ['portfolio' => $portfolio->id]) }}" class="mr-2">
-                                <button class="btn btn-primary">Ver</button>
-                            </a>
-                            <a href="{{ route('portfolio.edit', ['portfolio' => $portfolio->id]) }}" class="mr-2">
-                                <button class="btn btn-success">Editar</button>
-                            </a>
-                            <form method="POST" action="{{ route('portfolio.destroy', ['portfolio' => $portfolio->id]) }}">
-                                @csrf
-                                @method('DELETE')
-                                <button type="submit" class="btn btn-danger">Remover</button>
-                            </form>
-                        </td>
-                    </tr>
+    <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-12">
+        <div class="mdc-card p-0">
+            <h6 class="card-title card-padding p-4">Portfólios</h6>
 
-                @endforeach
-            </tbody>
-        </table>
+            <div class="table-responsive">
+                <table class="dashboard-table table table-hover">
+                    <thead>
+                        <tr>
+                            <th></th>
+                            <th>Nome</th>
+                            <th>Cliente</th>
+                            <th>Tipo</th>
+                            <th>Operações</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        @foreach ($portfolios as $portfolio)
+                            <tr>
+                                <td class="text-center">
+                                    @if ($portfolio->file_type == 'image')
+                                        <img src="{{ asset($portfolio->file) }}" alt="" class="rounded" width="70px" />
+                                    @elseif ($portfolio->file_type == 'video')
+                                        <video src="{{ asset($portfolio->file) }}" class="rounded" width="70px" height="70px" autoplay muted loop></video>
+                                    @endif
+                                </td>
+                                <td>{{ $portfolio->name }}</td>
+                                <td>{{ $portfolio->client ? $portfolio->client : 'Ñ definido' }}</td>
+                                <td>{{ $portfolio->type ? $portfolio->type : 'Ñ definido' }}</td>
+                                <td>
+                                    <a href="{{ route('portfolio.show', $portfolio->id) }}"
+                                        class="mdc-button mdc-button--raised icon-button filled-button--info p-1 btn">
+                                        <i class="material-icons mdc-button__icon">visibility</i>
+                                    </a>
+                                    
+                                    <a href="{{ route('portfolio.edit', $portfolio->id) }}"
+                                        class="mdc-button mdc-button--raised icon-button filled-button--info p-1 btn">
+                                        <i class="material-icons mdc-button__icon">edit</i>
+                                    </a>
+                                    
+                                    <a href="#"
+                                        onclick="
+                                            event.preventDefault();
+                                            swal({
+                                                title: 'Aviso',
+                                                text: 'Tem a certeza de que pretende eliminar este portfólio?',
+                                                icon: 'warning',
+                                                buttons: true,
+                                                dangerMode: true,
+                                            }).then(response => {
+                                                if (response) {{ 'destroy_portfolio_' . $portfolio->id }}.submit()
+                                            });
+                                        "
+                                        class="mdc-button mdc-button--raised icon-button filled-button--danger p-1 btn">
+                                        <i class="material-icons mdc-button__icon">delete</i>
+                                    </a>
+
+                                    <form action="{{ route('portfolio.destroy', $portfolio->id) }}" method="POST"
+                                        id="{{ 'destroy_portfolio_' . $portfolio->id }}">
+                                        @csrf
+
+                                        @METHOD('delete')
+                                    </form>
+                                </td>
+                            </tr>
+                        @endforeach
+                    </tbody>
+                </table>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="py-4 d-flex justify-content-center">
+        {!! $portfolios->links() !!}
     </div>
 @endsection
