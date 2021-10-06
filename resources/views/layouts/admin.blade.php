@@ -24,13 +24,14 @@
         <link href="{{ asset('admin/vendors/jvectormap/jquery-jvectormap.css') }}" rel="stylesheet">
 
         <!-- CSS -->
+        <link href="{{ asset('css/app.css') }}" rel="stylesheet">
         <link href="{{ asset('admin/css/style.css') }}" rel="stylesheet">
     </head>
 
     <body>
         <script src="{{ asset('admin/js/preloader.js') }}"></script>
 
-        <div class="body-wrapper">
+        <div id="app" class="body-wrapper">
 
             <x-menus.sidebar-menu />
 
@@ -54,6 +55,7 @@
 
         </div>
 
+        <script src="{{ asset('js/app.js') }}"></script>
         <script src="{{ asset('admin/vendors/js/vendor.bundle.base.js') }}"></script>
         <script src="{{ asset('admin/vendors/chartjs/Chart.min.js') }}"></script>
         <script src="{{ asset('admin/vendors/jvectormap/jquery-jvectormap.min.js') }}"></script>
