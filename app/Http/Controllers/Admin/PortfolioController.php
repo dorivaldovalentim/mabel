@@ -37,13 +37,15 @@ class PortfolioController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'name' => 'required',
-            'client' => 'required',
+            'name' => 'required|max:255|string',
+            'client' => 'nullable|string|max:255',
             'type' => 'nullable',
             'description' => 'required',
             'begins_at' => 'nullable',
             'ends_at' => 'nullable',
             'file' => 'required'
+        ], [
+            'required' => 'Este campo é obrigatório'
         ]);
 
         $portfolio = (array) $request->all();
@@ -54,7 +56,9 @@ class PortfolioController extends Controller
         }
 
         if ($request->user()->portfolios()->create($portfolio)) {
-            return redirect()->back();
+            return redirect()->back()->with([ 'type' => 'success', 'message' => 'Sucesso ao cadastrar portfólio' ]);
+        } else {
+            return redirect()->back()->with(['type' => 'error', 'message' => 'Erro ao cadastrar portfólio']);
         }
     }
 
