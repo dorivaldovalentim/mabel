@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Portfolio;
+use Illuminate\Support\Str;
 
 class PortfolioController extends Controller
 {
@@ -52,7 +53,7 @@ class PortfolioController extends Controller
         $portfolio = (array) $request->all();
 
         if ($request->hasFile('file')) {
-            $portfolio['file'] = $request->file->store('public/' . $portfolio['name']);
+            $portfolio['file'] = $request->file->store('public/' . Str::slug($portfolio['name'], '_'));
             $portfolio['file'] = str_replace('public', 'storage', $portfolio['file']);
             $portfolio['file_type'] = $request->file_type;
         }
@@ -118,7 +119,7 @@ class PortfolioController extends Controller
         $portfolio['description'] = $request->description;
 
         if ($request->hasFile('file')) {
-            $portfolio['file'] = $request->file->store('public/' . $portfolio['name']);
+            $portfolio['file'] = $request->file->store('public/' . Str::slug($portfolio['name'], '_'));
             $portfolio['file'] = str_replace('public', 'storage', $portfolio['file']);
             $portfolio['file_type'] = $request->file_type;
         }
