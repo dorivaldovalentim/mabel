@@ -55,13 +55,13 @@
                     <div class="mdc-expansion-panel" id="portfolios-sub-menu">
                         <nav class="mdc-list mdc-drawer-submenu">
                             <div class="mdc-list-item mdc-drawer-item">
-                                <a href="{{ route('portifolio.index') }}" class="mdc-drawer-link">
+                                <a href="{{ route('portfolio.index') }}" class="mdc-drawer-link">
                                     Ver
                                 </a>
                             </div>
 
                             <div class="mdc-list-item mdc-drawer-item">
-                                <a href="{{ route('portifolio.create') }}" class="mdc-drawer-link">
+                                <a href="{{ route('portfolio.create') }}" class="mdc-drawer-link">
                                     Cadastrar
                                 </a>
                             </div>
