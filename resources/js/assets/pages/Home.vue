@@ -3,7 +3,7 @@
     <div class="container-content">
       <div class="container-logo">
         <img
-          src=""
+          :src="getImage('logo_red_black_without_legend.png')"
           alt=""
           class="logo"
         />

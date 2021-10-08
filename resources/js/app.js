@@ -10,7 +10,8 @@ window.Vue = require('vue');
 
 import 'sweetalert';
 
-import router from './assets/router'
+import router from './assets/router';
+import './assets/helpers';
 
 /**
  * The following block of code may be used to automatically register your

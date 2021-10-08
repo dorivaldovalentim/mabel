@@ -5,9 +5,8 @@
 </template>
 
 <script>
-import './../static/css/fonts.css';
-import './../static/css/style.css';
 import MenuComponent from "../components/MenuComponent.vue";
+
 export default {
   components: { MenuComponent },
 };
