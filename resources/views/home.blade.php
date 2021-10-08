@@ -112,6 +112,7 @@
 @endsection
 
 @section('content')
+    <app-component />
     <div class="container">
         <div class="container-content">
             <div class="container-logo">

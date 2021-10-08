@@ -20,9 +20,11 @@
         @yield('styles')
     </head>
 
-    <body id="#app">
+    <body>
+        <main id="app">
+            @yield('content')
+        </main>
 
-        @yield('content')
-
+        <script src="{{ asset('js/app.js') }}"></script>
     </body>
 </html>
