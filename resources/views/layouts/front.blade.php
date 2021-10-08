@@ -17,6 +17,9 @@
         <!-- link icon -->
         <link rel="shortcut icon" type="image/x-icon" href="favicon.png" />
 
+        <!-- CSS -->
+        <link href="{{ asset('css/style.css') }}" rel="stylesheet">
+
         @yield('styles')
     </head>
 
