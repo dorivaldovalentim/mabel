@@ -1,120 +1,125 @@
-<!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+@extends('layouts.front')
 
-        <title>School Management APP</title>
+@section('title', 'Início')
 
-        <style lang="scss">
-            @import "./css/fonts.css";
+@section('styles')
+    <style lang="scss">
+        @import "./css/fonts.css";
 
-            * { margin: 0; padding: 0; text-decoration: none; }
+        * {
+            margin: 0;
+            padding: 0;
+            text-decoration: none;
+        }
 
-            body {
-                display: flex;
-                justify-content: center;
-                align-items: center;
-                background-image:
-                    linear-gradient(
-                        rgba(0, 0, 0, .5),
-                        rgba(0, 0, 0, .5)
-                    ),
-                    url("{{ asset('images/entrance.jpg') }}")
-                ;
-                background-position: center;
-                background-repeat: no-repeat;
-                background-attachment: fixed;
-                background-size: cover;
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-image:
+                linear-gradient(
+                    rgba(0, 0, 0, .5),
+                    rgba(0, 0, 0, .5)
+                ),
+                url("{{ asset('images/entrance.jpg') }}")
+            ;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-size: cover;
+        }
+
+        .container-content {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .container-logo {
+            width: 150px;
+            height: 150px;
+            display: flex;
+            margin-bottom: 0px;
+            border-radius: 50%;
+        }
+
+        .container-logo .logo {
+            object-fit: contain;
+            width: 100%;
+            height: 100%;
+        }
+
+        .container-title {
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font: normal normal normal 20pt/25pt "Neo Sans Pro Medium";
+            text-shadow: 0 0 5px black;
+            margin-bottom: 20px;
+            margin-top: 50px;
+            color: white;
+            overflow: hidden;
+            white-space: nowrap;
+            padding: 5px;
+            text-align: center;
+            position: relative;
+
+            animation-name: tiping;
+            animation-duration: 4s;
+            animation-timing-function: steps(20);
+            animation-iteration-count: infinite;
+            animation-direction: alternate;
+            animation-delay: .5s
+        }
+
+        .container-title span {
+            color: red;
+            text-shadow: 0 0 5px white;
+        }
+
+        .container-start-button {
+            padding: 15px 30px;
+            color: red;
+            border-color: white;
+            border: 1px solid white;
+            border-radius: 5px;
+            text-transform: uppercase;
+            font: normal normal normal 15pt/15pt "Neo Sans Pro Medium";
+            text-shadow: 0 0 2px white;
+            transition: all 1s;
+        }
+
+        .container-start-button:hover {
+            background: red;
+            border-color: red;
+            color: white;
+            box-shadow: 0 0 1px white;
+            text-shadow: 0 0 5px white;
+        }
+
+        @keyframes tiping {
+            from {
+                width: 0;
             }
 
-            .container-content {
-                display: flex;
-                flex-direction: column;
-                justify-content: center;
-                align-items: center;
-                height: 100vh;
+            75% {
+                width: 380px;
             }
+        }
 
-            .container-logo {
-                width: 150px;
-                height: 150px;
-                display: flex;
-                margin-bottom: 0px;
-                border-radius: 50%;
-            }
+    </style>
+@endsection
 
-            .container-logo .logo {
-                object-fit: contain;
-                width: 100%;
-                height: 100%;
-            }
-
-            .container-title {
-                text-transform: uppercase;
-                letter-spacing: 2px;
-                font: normal normal normal 20pt/25pt "Neo Sans Pro Medium";
-                text-shadow: 0 0 5px black;
-                margin-bottom: 20px;
-                margin-top: 50px;
-                color: white;
-                overflow: hidden;
-                white-space: nowrap;
-                padding: 5px;
-                text-align: center;
-                position: relative;
-
-                animation-name: tiping;
-                animation-duration: 4s;
-                animation-timing-function: steps(20);
-                animation-iteration-count: infinite;
-                animation-direction: alternate;
-                animation-delay: .5s
-            }
-
-            .container-title span {
-                color: red;
-                text-shadow: 0 0 5px white;
-            }
-
-            .container-start-button {
-                padding: 15px 30px;
-                color: red;
-                border-color: white;
-                border: 1px solid white;
-                border-radius: 5px;
-                text-transform: uppercase;
-                font: normal normal normal 15pt/15pt "Neo Sans Pro Medium";
-                text-shadow: 0 0 2px white;
-                transition: all 1s;
-            }
-
-            .container-start-button:hover {
-                background: red;
-                border-color: red;
-                color: white;
-                box-shadow: 0 0 1px white;
-                text-shadow: 0 0 5px white;
-            }
-
-            @keyframes tiping {
-                from { width: 0; }
-                75% { width: 380px; }
-            }
-        </style>
-    </head>
-
-    <body>
-        <div class="container">
-            <div class="container-content">
-                <div class="container-logo">
-                    <img src="{{ asset('admin/images/logo_red_white_without_legend.png') }}" alt="" class="logo" />
-                </div>
-
-                <h1 class="container-title">Olá e seja <span>bem-vindo ❤</span></h1>
-                <a href="{{ route('admin') }}" class="container-start-button">Começar</a>
+@section('content')
+    <div class="container">
+        <div class="container-content">
+            <div class="container-logo">
+                <img src="{{ asset('admin/images/logo_red_white_without_legend.png') }}" alt="" class="logo" />
             </div>
+
+            <h1 class="container-title">Olá e seja <span>bem-vindo ❤</span></h1>
+            <a href="{{ route('admin') }}" class="container-start-button">Começar</a>
         </div>
-    </body>
-</html>
+    </div>
+@endsection
