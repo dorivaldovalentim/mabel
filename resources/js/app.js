@@ -9,6 +9,7 @@ require('./bootstrap');
 window.Vue = require('vue');
 
 import 'sweetalert';
+import router from './assets/router'
 
 /**
  * The following block of code may be used to automatically register your
@@ -32,4 +33,5 @@ Vue.component('app-component', require('./assets/layouts/default.vue').default);
 
 const app = new Vue({
     el: '#app',
+    router
 });
