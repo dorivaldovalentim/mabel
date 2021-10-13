@@ -2078,7 +2078,47 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-/* harmony default export */ __webpack_exports__["default"] = ({});
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+/* harmony default export */ __webpack_exports__["default"] = ({
+  data: function data() {
+    return {
+      portfolios: []
+    };
+  },
+  mounted: function mounted() {
+    var _this = this;
+
+    axios.get("./api/portfolios").then(function (response) {
+      _this.portfolios = response.data.portfolios;
+    })["catch"](function (error) {
+      return console.log(error);
+    });
+  }
+});
 
 /***/ }),
 
@@ -6570,7 +6610,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, "/**\n * Extra Small screens\n */\n/**\n * Small screens\n */\n/**\n * Medium screens\n */\n/**\n * Large screens\n */\n/**\n * Extra Large screens\n */\n@media screen and (min-width: 1200px) {\n.portfolio-page .portfolio-item {\n    height: calc(100vh / 4);\n}\n}\n@media screen and (min-width: 992px) and (max-width: 1999px) {\n.portfolio-page .portfolio-item {\n    height: 25vh;\n    width: 25vh;\n}\n}\n@media screen and (min-width: 768px) and (max-width: 991px) {\n.portfolio-page .portfolio-item {\n    height: calc(100vh / 4);\n}\n}\n@media screen and (min-width: 576px) and (max-width: 767px) {\n.portfolio-page .portfolio-item {\n    height: calc(100vh / 4);\n}\n}\n@media screen and (max-width: 575px) {\n.portfolio-page .portfolio-item {\n    height: calc(100vh / 4);\n}\n}", ""]);
+exports.push([module.i, "/**\n * Extra Small screens\n */\n/**\n * Small screens\n */\n/**\n * Medium screens\n */\n/**\n * Large screens\n */\n/**\n * Extra Large screens\n */\n.portfolio-page .portfolio-item {\n  min-height: 200px;\n  text-decoration: none;\n}\n.portfolio-page .portfolio-item .portfolio-item-container {\n  width: 100%;\n  height: 100%;\n  overflow: hidden;\n  position: relative;\n}\n.portfolio-page .portfolio-item .portfolio-item-container video,\n.portfolio-page .portfolio-item .portfolio-item-container img {\n  width: 100%;\n  height: 100%;\n  position: absolute;\n  top: 0;\n  left: 0;\n  -o-object-fit: cover;\n     object-fit: cover;\n  transition: all 500ms;\n}\n.portfolio-page .portfolio-item .portfolio-item-container:hover .content {\n  opacity: 1;\n}\n.portfolio-page .portfolio-item .portfolio-item-container:hover video, .portfolio-page .portfolio-item .portfolio-item-container:hover img {\n  transform: scale(1.3) rotate(10deg);\n}\n.portfolio-page .portfolio-item .portfolio-item-container .content {\n  opacity: 0;\n  z-index: 10;\n  width: 100%;\n  height: 100%;\n  background: rgba(0, 0, 0, 0.7);\n  transition: all 500ms;\n}\n.portfolio-page .portfolio-item .portfolio-item-container .content .title {\n  font-size: 20pt;\n}", ""]);
 
 // exports
 
@@ -38628,19 +38668,54 @@ var render = function() {
     _c("div", { staticClass: "portfolio-container" }, [
       _c(
         "div",
-        { staticClass: "row" },
-        _vm._l(16, function(portfolio, index) {
+        { staticClass: "row mx-0", staticStyle: { width: "100%" } },
+        _vm._l(_vm.portfolios, function(portfolio, index) {
           return _c(
-            "div",
+            "router-link",
             {
               key: index,
               staticClass:
-                "portfolio-item p-0 m-0 col-lg-3 col-md-4 col-sm-6 col-12 bg-danger"
+                "\n          portfolio-item\n          col-lg-3 col-md-4 col-sm-6 col-12\n          px-0\n          text-white\n        ",
+              attrs: {
+                to: { name: "portfolio.show", params: { id: portfolio.id } }
+              }
             },
-            [_vm._v("\n        Olá\n      ")]
+            [
+              _c("div", { staticClass: "portfolio-item-container d-flex" }, [
+                portfolio.file_type == "image"
+                  ? _c("img", { attrs: { src: portfolio.file, alt: "" } })
+                  : _vm._e(),
+                _vm._v(" "),
+                portfolio.file_type == "video"
+                  ? _c("video", {
+                      attrs: {
+                        src: portfolio.file,
+                        alt: "",
+                        autoplay: "",
+                        muted: "",
+                        loop: ""
+                      },
+                      domProps: { muted: true }
+                    })
+                  : _vm._e(),
+                _vm._v(" "),
+                _c(
+                  "div",
+                  {
+                    staticClass:
+                      "content d-flex justify-content-center align-items-center"
+                  },
+                  [
+                    _c("span", { staticClass: "title" }, [
+                      _vm._v(_vm._s(portfolio.name))
+                    ])
+                  ]
+                )
+              ])
+            ]
           )
         }),
-        0
+        1
       )
     ])
   ])
