@@ -37898,7 +37898,7 @@ var render = function() {
             "router-link",
             {
               staticClass: "container-start-button",
-              attrs: { to: { name: "about" } }
+              attrs: { to: { name: "home" } }
             },
             [_vm._v("Começar")]
           )
@@ -53804,11 +53804,16 @@ vue__WEBPACK_IMPORTED_MODULE_0___default.a.use(vue_router__WEBPACK_IMPORTED_MODU
 var routes = [{
   path: '/',
   component: _pages_Start_vue__WEBPACK_IMPORTED_MODULE_3__["default"],
-  name: 'home'
+  name: 'start'
 }, {
   path: '/start',
-  component: _pages_Start_vue__WEBPACK_IMPORTED_MODULE_3__["default"],
-  name: 'start'
+  redirect: {
+    name: 'start'
+  }
+}, {
+  path: '/home',
+  component: _pages_Home_vue__WEBPACK_IMPORTED_MODULE_2__["default"],
+  name: 'home'
 }, {
   path: '/about',
   component: _pages_About_vue__WEBPACK_IMPORTED_MODULE_4__["default"],

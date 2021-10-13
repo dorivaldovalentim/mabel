@@ -11,7 +11,7 @@
         </div>
 
         <h1 class="container-title">Olá e seja <span>bem-vindo ❤</span></h1>
-        <router-link :to="{ name: 'about' }" class="container-start-button"
+        <router-link :to="{ name: 'home' }" class="container-start-button"
           >Começar</router-link
         >
       </div>

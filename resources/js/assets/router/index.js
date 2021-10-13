@@ -7,8 +7,9 @@ import About from './../pages/About.vue';
 Vue.use(VueRouter);
 
 const routes = [
-    { path: '/', component: Start, name: 'home' },
-    { path: '/start', component: Start, name: 'start' },
+    { path: '/', component: Start, name: 'start' },
+    { path: '/start', redirect: { name: 'start' } },
+    { path: '/home', component: Home, name: 'home' },
     { path: '/about', component: About, name: 'about' },
 ];
 
