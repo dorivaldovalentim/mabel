@@ -15,7 +15,8 @@ class PortfolioController extends Controller
      */
     public function index()
     {
-        //
+        $portfolios = Portfolio::orderBy('name')->get();
+        return response()->json([ 'portfolios' => $portfolios ]);
     }
 
     /**
@@ -26,6 +27,7 @@ class PortfolioController extends Controller
      */
     public function show($id)
     {
-        //
+        $portfolio = Portfolio::findOrFail($id);
+        return response()->json(['portfolio' => $portfolio]);
     }
 }
