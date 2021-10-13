@@ -1,21 +1,18 @@
 import Vue from 'vue';
 import VueRouter from 'vue-router';
-import Home from './../pages/Home.vue';
-import Start from './../pages/Start.vue';
-import About from './../pages/About.vue';
-import Portfolio from './../pages/Portfolio.vue';
 
 Vue.use(VueRouter);
 
 const routes = [
-    { path: '/', component: Start, name: 'start' },
+    { path: '/', component: require('./../pages/Start.vue').default, name: 'start' },
     { path: '/start', redirect: { name: 'start' } },
-    { path: '/home', component: Home, name: 'home' },
-    { path: '/about', component: About, name: 'about' },
-    { path: '/portfolio', component: Portfolio, name: 'portfolio' },
+    { path: '/home', component: require('./../pages/Home.vue').default, name: 'home' },
+    { path: '/about', component: require('./../pages/About.vue').default, name: 'about' },
+    { path: '/portfolio', component: require('./../pages/Portfolio').default, name: 'portfolio' },
+    { path: '/portfolio/show/:id', component: require('./../pages/Portfolio/Show.vue').default, name: 'portfolio.show' },
 ];
 
-const $router = new VueRouter ({
+const $router = new VueRouter({
     mode: 'history',
     base: '/',
     routes

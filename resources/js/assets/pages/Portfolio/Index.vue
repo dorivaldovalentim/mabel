@@ -59,7 +59,7 @@ export default {
 </script>
 
 <style lang="scss">
-@import "./../static/scss/responsive.scss";
+@import "./../../static/scss/responsive.scss";
 
 .portfolio-page {
   .portfolio-item {
