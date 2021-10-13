@@ -17,3 +17,10 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+Route::group(['namespace' => 'Api'], function() {
+    Route::group(['prefix' => 'portfolios'], function() {
+        Route::get('/', 'PortfolioController@index');
+        Route::get('/show/{id}', 'PortfolioController@show');
+    });
+});

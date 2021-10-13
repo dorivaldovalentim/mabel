@@ -21,9 +21,11 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::group(['prefix' => 'admin', 'namespace' => 'Admin', 'middleware' => 'auth'], function() {
     Route::get('/', 'AdminController@index')->name('admin');
     Route::get('/home', 'AdminController@index')->name('admin');
-
+    
     Route::resource('portfolio', 'PortfolioController');
     Route::resource('gallery', 'GalleryController');
     Route::resource('user', 'UserController');
     Route::delete('/user/{id}/restore', 'UserController@restore')->name('user.restore');
 });
+
+Route::get('/{vue_capture?}', 'HomeController@index')->where('vue_capture', '[\/\w\.-]*');
