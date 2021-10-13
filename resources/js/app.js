@@ -9,6 +9,7 @@ require('./bootstrap');
 window.Vue = require('vue');
 
 import 'sweetalert';
+import 'animate.css';
 
 import router from './assets/router';
 import './assets/helpers';
