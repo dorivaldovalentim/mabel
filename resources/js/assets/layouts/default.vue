@@ -1,7 +1,7 @@
 <template>
-  <main>
+  <div>
 		<router-view></router-view>
-  </main>
+  </div>
 </template>
 
 <script>
@@ -9,6 +9,10 @@ import MenuComponent from "../components/MenuComponent.vue";
 
 export default {
   components: { MenuComponent },
+
+  mounted() {
+    console.log('Ola');
+  }
 };
 </script>
 
