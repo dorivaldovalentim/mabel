@@ -38825,7 +38825,14 @@ var render = function() {
         ]),
         _vm._v(" "),
         _c("div", { staticClass: "col-md-5" }, [
-          _c("p", [_vm._v("Cliente: " + _vm._s(_vm.portfolio.client))]),
+          _c("p", [
+            _vm._v(
+              "Cliente: " +
+                _vm._s(
+                  _vm.portfolio.client ? _vm.portfolio.client : "não definido"
+                )
+            )
+          ]),
           _vm._v(" "),
           _c("p", [_vm._v("Tipo de portfólio: " + _vm._s(_vm.portfolio.type))]),
           _vm._v(" "),

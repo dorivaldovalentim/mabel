@@ -21,7 +21,7 @@
         </div>
 
         <div class="col-md-5">
-          <p>Cliente: {{ portfolio.client }}</p>
+          <p>Cliente: {{ portfolio.client ? portfolio.client : 'não definido' }}</p>
           <p>Tipo de portfólio: {{ portfolio.type }}</p>
           <p>
             Duração:

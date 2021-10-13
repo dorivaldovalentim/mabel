@@ -12,7 +12,7 @@
     
             <div class="card-body">
                 <h5 class="card-title">{{ $portfolio->name }}</h5>
-                <p class="card-text">Cliente: {{ $portfolio->client }}</p>
+                <p class="card-text">Cliente: {{ $portfolio->client ? $portfolio->client : 'não definido' }}</p>
                 <p class="card-text">Tipo de portfólio: {{ $portfolio->type }}</p>
                 <p class="card-text">{{ $portfolio->description }}</p>
             </div>
